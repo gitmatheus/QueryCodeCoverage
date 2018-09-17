@@ -1,0 +1,58 @@
+<apex:page controller="CodeCoverageController" showHeader="true" sidebar="false" docType="html-5.0">
+    <apex:slds />
+    <apex:form id="codeCoverageForm">
+        <apex:outputPanel id="codeCoverageRepeat" style="justify-content: left;">
+            <br/>
+            <div class="centered">
+                <div class="slds-text-heading_large">
+                    <span>
+                        <h2 style="justify-content: center;">Code Coverage information: </h2>
+                    </span>
+                </div>
+            </div>
+            <br/>
+
+            <apex:outputPanel id="buttonsPanel">
+                <div class="text-center">
+                    <apex:outputPanel>
+                        <apex:commandButton action="{!populateCodeCoverageByName}" value="Sort by Name" reRender="codeCoverageForm" styleClass="slds-button slds-button_outline-brand slds-button--neutral slds-not-selected"  />
+                    </apex:outputPanel>
+                    <span> or </span>
+                    <apex:outputPanel>
+                        <apex:commandButton action="{!populateCodeCoverageByCoverage}" value="Sort by Coverage" reRender="codeCoverageForm" styleClass="slds-button slds-button_outline-brand slds-button--neutral slds-not-selected" />
+                    </apex:outputPanel>
+                </div>
+            </apex:outputPanel>
+
+            <br/>
+
+            <apex:repeat value="{!codeCoverageMessages}" var="codeCoverageMessage">
+                
+                <!-- Code coverage is below 10% -->
+                <apex:outputPanel  rendered="{!if(contains(codeCoverageMessage,messageUnder10),'true','false')}" style="justify-content: left;">
+                    <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert" style="justify-content: left;">
+                        <span class="slds-assistive-text">error</span>
+                        <h2 style="justify-content: left;">{!codeCoverageMessage}</h2>
+                    </div>
+                </apex:outputPanel>
+                
+                <!-- Code coverage is under 75% -->
+                <apex:outputPanel rendered="{!if(contains(codeCoverageMessage,messageUnder75),'true','false')}" style="justify-content: left;">
+                    <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert" style="justify-content: left;">
+                        <span class="slds-assistive-text">warning</span>
+                        <h2 style="justify-content: left;">{!codeCoverageMessage}</h2>
+                    </div>
+                </apex:outputPanel>
+
+                <!-- Code coverage is above 75% -->
+                <apex:outputPanel rendered="{!if(contains(codeCoverageMessage,messageAbove75),'true','false')}" style="justify-content: left;">
+                    <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_info" role="alert" style="justify-content: left;">
+                        <span class="slds-assistive-text">info</span>
+                        <h2 style="justify-content: left;">{!codeCoverageMessage}</h2>
+                    </div>
+                </apex:outputPanel>
+
+            </apex:repeat>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>
