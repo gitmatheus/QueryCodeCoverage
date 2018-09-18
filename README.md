@@ -4,3 +4,5 @@ In Salesforce Orgs, code coverage percentage is a calculation of the number of c
 To deploy Apex or package it for the Salesforce AppExchange, unit tests must cover at least 75% of your Apex code, and those tests must pass.  After running tests, you can view code coverage information in the Tests tab of the Developer Console. The code coverage pane includes coverage information for each Apex class and the overall coverage for all Apex code in your organization.  However, you can also use SOQL queries with Tooling API as an alternative way of checking code coverage and a quick way to get more details. 
 
 The code in this repository show how it works.
+
+More details in: https://matheusgoncalves.com/how-to-query-salesforce-code-coverage/
