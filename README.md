@@ -5,4 +5,4 @@ To deploy Apex or package it for the Salesforce AppExchange, unit tests must cov
 
 The code in this repository show how it works.
 
-More details in: https://matheusgoncalves.com/how-to-query-salesforce-code-coverage/
+More details in: https://matheus.dev/how-to-query-salesforce-code-coverage/
